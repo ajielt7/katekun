@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Input ke Label</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="mb-3 col-4">
+                <label class="form-label">Kategori</label>
+                <input class="form-control mb-1" type="text" id="input11">
+                <label class="form-label">Kata Kunci</label>
+                <input class="form-control mb-1" type="text" id="input1" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input2" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input3" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input4" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input5" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input6" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input7" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input8" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input9" onkeyup="updateOutput()">
+                <input class="form-control mb-1" type="text" id="input10" onkeyup="updateOutput()">
+            </div>
+            <div class="mb-3 col-8">
+                <p id="output10"></p>
+                <p id="output9"></p>
+                <p id="output8"></p>
+                <p id="output7"></p>
+                <p id="output6"></p>
+                <p id="output5"></p>
+                <p id="output4"></p>
+                <p id="output3"></p>
+                <p id="output2"></p>
+                <p id="output1"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        const inputs = document.querySelectorAll('input');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    const nextIndex = (index + 1) % inputs.length;
+                    inputs[nextIndex].focus();
+                }
+            });
+        });
+
+
+        function updateOutput() {
+            const input1 = document.getElementById('input1').value;
+            const input2 = document.getElementById('input2').value;
+            const input3 = document.getElementById('input3').value;
+            const input4 = document.getElementById('input4').value;
+            const input5 = document.getElementById('input5').value;
+            const input6 = document.getElementById('input6').value;
+            const input7 = document.getElementById('input7').value;
+            const input8 = document.getElementById('input8').value;
+            const input9 = document.getElementById('input9').value;
+            const input10 = document.getElementById('input10').value;
+            const input11 = document.getElementById('input11').value;
+
+            
+            const outputElement10 = document.getElementById('output10');
+            outputElement10.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + input7 + ' ' + input8 + ' ' + input9 + ' ' + input10;
+            
+            const outputElement9 = document.getElementById('output9');
+            outputElement9.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + input7 + ' ' + input8 + ' ' + input9 + ' ' + '-' + ' ' + input11  + ' ' + input10;
+            
+            const outputElement8 = document.getElementById('output8');
+            outputElement8.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + input7 + ' ' + input8 + ' ' + '-' + ' ' + input11  + ' ' + input9 + ' ' + input10;
+            
+            const outputElement7 = document.getElementById('output7');
+            outputElement7.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + input7 + ' ' + '-' + ' ' + input11  + ' ' + input8 + ' ' + input9 + ' ' + input10;
+            
+            const outputElement6 = document.getElementById('output6');
+            outputElement6.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + '-' + ' ' + input11  + ' ' + input7 + ' ' + input8 + ' ' + input9 + ' ' + input10;
+            
+            const outputElement5 = document.getElementById('output5');
+            outputElement5.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + input5 + ' ' + '-' + ' ' + input11  + ' ' + input6 + ' ' + input7 + ' ' + input8 + ' ' + input9 + ' ' + input10;
+            
+            const outputElement4 = document.getElementById('output4');
+            outputElement4.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + input4 + ' ' + '-' + ' ' + input11  + ' ' + input5 + ' ' + input6 + ' ' + input7 + ' ' + input8 + ' ' + '-' + ' ' + input11  + ' ' + input9 + ' ' + input10;
+            
+            const outputElement3 = document.getElementById('output3');
+            outputElement3.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + input3 + ' ' + '-' + ' ' + input11  + ' ' + input4 + ' ' + input5 + ' ' + input6 + ' ' + '-' + ' ' + input11  + ' ' + input7 + ' ' + input8 + ' ' + input9 + ' ' + '-' + ' ' + input11  + ' ' + input10;
+            
+            const outputElement2 = document.getElementById('output2');
+            outputElement2.textContent = input11 + ' ' + input1 + ' ' + input2 + ' ' + '-' + ' ' + input11  + ' ' + input3 + ' ' + input4 + ' ' + '-' + ' ' + input11  + ' ' + input5 + ' ' + input6 + ' ' + '-' + ' ' + input11  + ' ' + input7 + ' ' + input8 + ' ' + '-' + ' ' + input11  + ' ' + input9 + ' ' + input10;
+
+            const outputElement1 = document.getElementById('output1');
+            outputElement1.textContent = input11 + ' ' + input1 + ' ' + input11  + ' ' + input2 + ' ' + input11  + ' ' + input3 + ' ' + input11  + ' ' + input4 + ' ' + input11  + ' ' + input5 + ' ' + input11  + ' ' + input6 + ' ' + input11  + ' ' + input7 + ' ' + input11  + ' ' + input8 + ' ' + input11  + ' ' + input9 + ' ' + input11  + ' ' + input10;
+            
+        }
+    </script>
+</body>
+</html>
