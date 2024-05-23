@@ -9,7 +9,22 @@
 <body>
     <div class="container mt-4">
         <div class="row">
-            <div class="mb-3 col-4">
+            <div class="mb-3 col-1">
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OSS()">OSS</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OST()">OST</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OSP()">OSP</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OSM()">OSM</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="FP()">FP</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="MKP()">MKP</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="MKT()">MKT</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="FM()">FM</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="FK()">FK</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="RIB()">RIB</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OSA()">OSA</button>
+                    <button type="button" class="btn btn-primary mb-1 d-block" onclick="OSF()">OSF</button>
+            </div>
+
+            <div class="mb-3 col-2">
                 <label class="form-label">Kategori</label>
                 <input class="form-control mb-1" type="text" id="input11">
                 <label class="form-label">Kata Kunci</label>
@@ -24,7 +39,8 @@
                 <input class="form-control mb-1" type="text" id="input9" onkeyup="updateOutput()">
                 <input class="form-control mb-1" type="text" id="input10" onkeyup="updateOutput()">
             </div>
-            <div class="mb-3 col-8">
+
+            <div class="mb-3 col-9">
                 <p id="output10"></p>
                 <p id="output9"></p>
                 <p id="output8"></p>
@@ -40,7 +56,55 @@
     </div>
 
     <script>
-
+        var inp1;
+        var inp2;
+        var inp3;
+        var inp4;
+        var inp5;
+        var inp6;
+        var inp7;
+        var inp8;
+        var inp9;
+        var inp10;
+        
+        // ----------------------- contoh format code input judul otomatis -----------------------
+        // function setKataKunci() {
+        //     inp1 = "kaos kaki";
+        //     inp2 = "";
+        //     inp3 = "";
+        //     inp4 = "";
+        //     inp5 = "";
+        //     inp6 = "";
+        //     inp7 = "";
+        //     inp8 = "";
+        //     inp9 = "";
+        //     inp10 = "";
+        //     setInputText();
+        //     updateOutput()
+        // }
+        
+        function setInputText() {
+            var inputElement1 = document.getElementById("input1");
+            var inputElement2 = document.getElementById("input2");
+            var inputElement3 = document.getElementById("input3");
+            var inputElement4 = document.getElementById("input4");
+            var inputElement5 = document.getElementById("input5");
+            var inputElement6 = document.getElementById("input6");
+            var inputElement7 = document.getElementById("input7");
+            var inputElement8 = document.getElementById("input8");
+            var inputElement9 = document.getElementById("input9");
+            var inputElement10 = document.getElementById("input10");
+            inputElement1.value = inp1;
+            inputElement2.value = inp2;
+            inputElement3.value = inp3;
+            inputElement4.value = inp4;
+            inputElement5.value = inp5;
+            inputElement6.value = inp6;
+            inputElement7.value = inp7;
+            inputElement8.value = inp8;
+            inputElement9.value = inp9;
+            inputElement10.value = inp10;
+        }
 
         const inputs = document.querySelectorAll('input');
 
