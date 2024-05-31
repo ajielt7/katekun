@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -198,6 +198,328 @@ function MKP() {
             outputElement1.textContent = input11 + ' ' + input1 + ' ' + input11  + ' ' + input2 + ' ' + input11  + ' ' + input3 + ' ' + input11  + ' ' + input4 + ' ' + input11  + ' ' + input5 + ' ' + input11  + ' ' + input6 + ' ' + input11  + ' ' + input7 + ' ' + input11  + ' ' + input8 + ' ' + input11  + ' ' + input9 + ' ' + input11  + ' ' + input10;
             
         }
+    </script>
+</body>
+</html>
+ -->
+
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Nilai Kategori</title>
+</head>
+<body>
+    <label id="formattedLabel"></label>
+
+    <script>
+        function formatNilaiKategori(...kataKunci) {
+            return kataKunci
+                .filter(kata => kata.trim() !== '') // Menyaring kata kunci yang kosong
+                .map(kata => kata.trim() ? `kategori (${kata})` : kata) // Menambahkan "kategori" hanya jika kata kunci tidak kosong
+                .join(' - ');
+        }
+
+        // Contoh penggunaan
+        const hasilFormat = formatNilaiKategori('kata kunci1', '', 'kata kunci3', 'kata kunci4', 'kata kunci5');
+        document.getElementById('formattedLabel').innerText = hasilFormat; // Mengisi label dengan hasil format
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Nilai Kategori</title>
+</head>
+<body>
+    <label id="formattedLabel"></label>
+
+    <script>
+        const kataKunci = [
+            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal', 
+            'hitam', 'api', 'wanita', 'futsal', 'wanita panjang', 'sport', 
+            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah', 
+            'stripe old school', 'belang'
+        ];
+
+        function formatNilaiKategori(kataKunci) {
+            let results = [];
+            let seenWords = new Set();
+
+            kataKunci.forEach(item => {
+                let words = item.split(' ');
+
+                // Check if any word in the item has already been seen
+                let isUnique = words.every(word => !seenWords.has(word));
+
+                if (isUnique) {
+                    words.forEach(word => seenWords.add(word)); // Add all words to seenWords
+                    results.push(`kaos kaki (${item})`);
+                }
+            });
+
+            return results.join(' - ');
+        }
+
+        const hasilFormat = formatNilaiKategori(kataKunci);
+        document.getElementById('formattedLabel').innerText = hasilFormat;
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Nilai Kategori</title>
+</head>
+<body>
+    <div id="formattedLabels"></div>
+
+    <script>
+        const kataKunci = [
+            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal', 
+            'hitam', 'api', 'wanita', 'futsal', 'wanita panjang', 'sport', 
+            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah', 
+            'stripe old school', 'belang'
+        ];
+
+        function formatNilaiKategori(kataKunci) {
+            let results = [];
+            let seenWords = new Set();
+
+            kataKunci.forEach(item => {
+                let words = item.split(' ');
+
+                // Check if any word in the item has already been seen
+                let isUnique = words.every(word => !seenWords.has(word));
+
+                if (isUnique) {
+                    words.forEach(word => seenWords.add(word)); // Add all words to seenWords
+                    results.push(`kaos kaki ${item}`);
+                }
+            });
+
+            return results.join(' - ');
+        }
+
+        function generateCombinations(kataKunci) {
+            let combinations = [];
+
+            for (let i = 0; i < kataKunci.length; i++) {
+                let rotatedKataKunci = kataKunci.slice(i).concat(kataKunci.slice(0, i));
+                let hasilFormat = formatNilaiKategori(rotatedKataKunci);
+                combinations.push(hasilFormat);
+            }
+
+            return combinations;
+        }
+
+        const combinations = generateCombinations(kataKunci);
+        const formattedLabels = document.getElementById('formattedLabels');
+
+        combinations.forEach((combination, index) => {
+            const label = document.createElement('label');
+            label.innerText = `Kemungkinan ${index + 1}: ${combination}`;
+            formattedLabels.appendChild(label);
+            formattedLabels.appendChild(document.createElement('br'));
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Nilai Kategori</title>
+</head>
+<body>
+    <div id="formattedLabels"></div>
+
+    <script>
+        const kataKunci = [
+            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal', 
+            'hitam', 'api', 'wanita', 'futsal', 'wanita panjang', 'sport', 
+            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah', 
+            'stripe old school', 'belang'
+        ];
+
+        function formatNilaiKategori(kataKunci) {
+            let results = [];
+            let seenWords = new Set();
+
+            kataKunci.forEach(item => {
+                if (item.trim() === '') {
+                    // Skip empty labels
+                    return;
+                }
+
+                let words = item.split(' ');
+
+                // Check if any word in the item has already been seen
+                let isUnique = words.every(word => !seenWords.has(word));
+
+                if (isUnique) {
+                    words.forEach(word => seenWords.add(word)); // Add all words to seenWords
+                    results.push(`kaos kaki ${item}`);
+                }
+            });
+
+            return results.join(' - ');
+        }
+
+        function generateCombinations(kataKunci) {
+            let combinations = [];
+
+            // Generate combinations by removing the first element successively
+            for (let i = 0; i < kataKunci.length; i++) {
+                let slicedKataKunci = kataKunci.slice(i);
+                let hasilFormat = formatNilaiKategori(slicedKataKunci);
+                if (hasilFormat !== '') { // Ensure we don't display empty results
+                    combinations.push(hasilFormat);
+                }
+            }
+
+            return combinations;
+        }
+
+        const combinations = generateCombinations(kataKunci);
+        const formattedLabels = document.getElementById('formattedLabels');
+
+        combinations.forEach((combination, index) => {
+            const label = document.createElement('label');
+            label.innerText = `Kemungkinan ${index + 1}: ${combination}`;
+            formattedLabels.appendChild(label);
+            formattedLabels.appendChild(document.createElement('br'));
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combinations of Sock Labels</title>
+</head>
+<body>
+    <div id="validCombinations"></div>
+
+    <script>
+        const labels = [
+            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal',
+            'api', 'wanita', 'futsal', 'wanita panjang', 'sport',
+            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah',
+            'stripe old school', 'belang'
+        ];
+
+        function generateCombinations(labels) {
+            let results = [];
+            function explore(path, remainingLabels, usedWords) {
+                if (path.length === labels.length) {
+                    results.push(path.join(' - '));
+                    return;
+                }
+
+                remainingLabels.forEach((label, index) => {
+                    let words = label.split(' ');
+                    let isUnique = words.every(word => !usedWords.has(word));
+                    if (isUnique) {
+                        let nextPath = [...path, `kaos kaki (${label})`];
+                        let nextUsedWords = new Set([...usedWords, ...words]);
+                        let nextRemainingLabels = remainingLabels.filter((_, i) => i !== index);
+                        explore(nextPath, nextRemainingLabels, nextUsedWords);
+                    }
+                });
+            }
+
+            explore([], labels, new Set());
+            return results;
+        }
+
+        // Generate unique combinations
+        const uniqueCombinations = generateCombinations(labels);
+        document.getElementById('validCombinations').innerText = uniqueCombinations.join('\n\n');
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Nilai Kategori</title>
+</head>
+<body>
+    <div id="formattedLabels"></div>
+
+    <script>
+        const kataKunci = [
+            'pria panjang', 'panjang', 'pria tebal', 'wanita panjang', 'sport pria', 'pria pendek', 'stripe old school'
+        ];
+
+        function formatNilaiKategori(kataKunci) {
+            let results = [];
+            let seenWords = new Set();
+
+            kataKunci.forEach(item => {
+                let words = item.split(' ');
+
+                // Check if any word in the item has already been seen
+                let isUnique = words.every(word => !seenWords.has(word));
+
+                if (isUnique) {
+                    words.forEach(word => seenWords.add(word)); // Add all words to seenWords
+                    results.push(`kaos kaki ${item}`);
+                }
+            });
+
+            return results;
+        }
+
+        function generateCombinations(kataKunci) {
+            let combinations = [];
+
+            for (let i = 0; i < kataKunci.length; i++) {
+                let rotatedKataKunci = kataKunci.slice(i).concat(kataKunci.slice(0, i));
+                let hasilFormat = formatNilaiKategori(rotatedKataKunci);
+                combinations.push(hasilFormat);
+            }
+
+            return combinations;
+        }
+
+        function displayResults(kataKunci) {
+            const formattedLabels = document.getElementById('formattedLabels');
+            const combinations = generateCombinations(kataKunci);
+
+            combinations.forEach((combination, index) => {
+                const label = document.createElement('label');
+                label.innerText = `Kemungkinan ${index + 1}: `;
+                
+                combination.forEach((item, idx) => {
+                    label.innerText += item;
+                    if (idx !== combination.length - 1) {
+                        label.innerText += ' - ';
+                    }
+                });
+                
+                formattedLabels.appendChild(label);
+                formattedLabels.appendChild(document.createElement('br'));
+            });
+        }
+
+        displayResults(kataKunci);
     </script>
 </body>
 </html>
