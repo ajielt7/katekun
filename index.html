@@ -1,48 +1,69 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combinations of Sock Labels</title>
+    <title>Format Nilai Kategori</title>
 </head>
 <body>
-    <div id="validCombinations"></div>
+    <div id="formattedLabels"></div>
 
     <script>
-        const labels = [
-            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal',
-            'api', 'wanita', 'futsal', 'wanita panjang', 'sport',
-            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah',
+        const kataKunci = [
+            'pria panjang', 'panjang', 'hitam', 'putih', 'pria tebal', 'tebal', 
+            'hitam', 'api', 'wanita', 'futsal', 'wanita panjang', 'sport', 
+            'sport pria', 'pria pendek', 'olahraga', 'pria', 'sekolah', 
             'stripe old school', 'belang'
         ];
 
-        function generateCombinations(labels) {
+        function formatNilaiKategori(kataKunci) {
             let results = [];
-            function explore(path, remainingLabels, usedWords) {
-                if (path.length === labels.length) {
-                    results.push(path.join(' - '));
+            let seenWords = new Set();
+
+            kataKunci.forEach(item => {
+                if (item.trim() === '') {
+                    // Skip empty labels
                     return;
                 }
 
-                remainingLabels.forEach((label, index) => {
-                    let words = label.split(' ');
-                    let isUnique = words.every(word => !usedWords.has(word));
-                    if (isUnique) {
-                        let nextPath = [...path, `kaos kaki (${label})`];
-                        let nextUsedWords = new Set([...usedWords, ...words]);
-                        let nextRemainingLabels = remainingLabels.filter((_, i) => i !== index);
-                        explore(nextPath, nextRemainingLabels, nextUsedWords);
-                    }
-                });
-            }
+                let words = item.split(' ');
 
-            explore([], labels, new Set());
-            return results;
+                // Check if any word in the item has already been seen
+                let isUnique = words.every(word => !seenWords.has(word));
+
+                if (isUnique) {
+                    words.forEach(word => seenWords.add(word)); // Add all words to seenWords
+                    results.push(`kaos kaki ${item}`);
+                }
+            });
+
+            return results.join(' - ');
         }
 
-        // Generate unique combinations
-        const uniqueCombinations = generateCombinations(labels);
-        document.getElementById('validCombinations').innerText = uniqueCombinations.join('\n\n');
+        function generateCombinations(kataKunci) {
+            let combinations = [];
+
+            // Generate combinations by removing the first element successively
+            for (let i = 0; i < kataKunci.length; i++) {
+                let slicedKataKunci = kataKunci.slice(i);
+                let hasilFormat = formatNilaiKategori(slicedKataKunci);
+                if (hasilFormat !== '') { // Ensure we don't display empty results
+                    combinations.push(hasilFormat);
+                }
+            }
+
+            return combinations;
+        }
+
+        const combinations = generateCombinations(kataKunci);
+        const formattedLabels = document.getElementById('formattedLabels');
+
+        combinations.forEach((combination, index) => {
+            const label = document.createElement('label');
+            label.innerText = `Kemungkinan ${index + 1}: ${combination}`;
+            formattedLabels.appendChild(label);
+            formattedLabels.appendChild(document.createElement('br'));
+        });
     </script>
 </body>
-</html>
+</html> -->
